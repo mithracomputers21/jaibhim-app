@@ -6,11 +6,14 @@ use App\Filament\Resources\MemberResource\Pages;
 use App\Filament\Resources\MemberResource\RelationManagers;
 use App\Filament\Resources\MemberResource\RelationManagers\MemberPaymentsRelationManager;
 use App\Filament\Resources\MemberResource\RelationManagers\MemberLibrariesRelationManager;
+use App\Filament\Resources\MemberResource\Widgets\MemberStatsOverview;
 use App\Models\Member;
 use App\Models\District;
 use App\Models\Block;
 use App\Models\Village;
 use App\Models\Habitation;
+use App\Models\MemberLibrary;
+use App\Models\MemberPayment;
 use Filament\Forms;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
@@ -127,9 +130,10 @@ class MemberResource extends Resource
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('phone_number')->sortable()->searchable(),
                 TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('plan.plan_name')->sortable()->searchable(),
-                TextColumn::make('type.plan_type')->sortable()->searchable(),
-                TextColumn::make('created_at')->dateTime('d-m-Y')
+                TextColumn::make('plan.plan_name')->label('Member Plan')->sortable()->searchable(),
+                TextColumn::make('type.plan_type')->label('Member Type')->sortable()->searchable(),
+                TextColumn::make('member_payments.amount')->label('Amount')->sortable()->searchable(),
+                TextColumn::make('created_at')->label('Join Date')->dateTime('d-m-Y')
             ])
             ->filters([
                 //
@@ -150,6 +154,13 @@ class MemberResource extends Resource
         ];
     }
     
+    public static function getWidgets() : array
+    {
+        return [
+            MemberStatsOverview::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [

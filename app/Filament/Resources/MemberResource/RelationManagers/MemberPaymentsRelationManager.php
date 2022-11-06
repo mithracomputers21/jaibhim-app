@@ -42,7 +42,13 @@ class MemberPaymentsRelationManager extends RelationManager
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('method.payment_method')->label('Payment Method'),
+                Tables\Columns\TextColumn::make('payment_date'),
                 Tables\Columns\TextColumn::make('amount'),
+                Tables\Columns\TextColumn::make('transaction_id'),
+                Tables\Columns\TextColumn::make('receipt_number'),
+                Tables\Columns\TextColumn::make('bank_status'),
+                Tables\Columns\TextColumn::make('verified_by'),
             ])
             ->filters([
                 //

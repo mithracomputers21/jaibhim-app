@@ -6,6 +6,8 @@ use App\Filament\Resources\BlockResource\Pages;
 use App\Filament\Resources\BlockResource\RelationManagers;
 use App\Filament\Resources\BlockResource\RelationManagers\VillagesRelationManager;
 use App\Models\Block;
+use App\Models\MemberLibrary;
+use App\Models\MemberPayment;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;

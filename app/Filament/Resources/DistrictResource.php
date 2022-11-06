@@ -7,6 +7,8 @@ use App\Filament\Resources\DistrictResource\RelationManagers;
 use App\Filament\Resources\DistrictResource\RelationManagers\MembersRelationManager;
 use App\Filament\Resources\DistrictResource\RelationManagers\BlocksRelationManager;
 use App\Models\District;
+use App\Models\MemberLibrary;
+use App\Models\MemberPayment;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;

@@ -53,4 +53,9 @@ class MemberLibrary extends Model
     {
         return $this->belongsTo(Method::class);
     }
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

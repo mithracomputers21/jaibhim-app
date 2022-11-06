@@ -7,10 +7,13 @@ use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\Member;
 use App\Models\District;
 use App\Models\Block;
 use App\Models\Village;
 use App\Models\Habitation;
+use App\Models\MemberLibrary;
+use App\Models\MemberPayment;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;
@@ -78,6 +81,11 @@ class MemberLibrariesRelationManager extends RelationManager
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('member.name'),
+                Tables\Columns\TextColumn::make('district.district_name'),
+                Tables\Columns\TextColumn::make('block.block_name'),
+                Tables\Columns\TextColumn::make('village.village_name'),
+                Tables\Columns\TextColumn::make('habitation.habitation_name'),
                 Tables\Columns\TextColumn::make('contact_person_name'),
             ])
             ->filters([

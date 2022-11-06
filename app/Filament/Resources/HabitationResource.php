@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\HabitationResource\Pages;
 use App\Filament\Resources\HabitationResource\RelationManagers;
 use App\Models\Habitation;
+use App\Models\MemberLibrary;
+use App\Models\MemberPayment;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;

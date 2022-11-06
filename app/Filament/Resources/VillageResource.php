@@ -6,6 +6,8 @@ use App\Filament\Resources\VillageResource\Pages;
 use App\Filament\Resources\VillageResource\RelationManagers;
 use App\Filament\Resources\VillageResource\RelationManagers\HabitationsRelationManager;
 use App\Models\Village;
+use App\Models\MemberLibrary;
+use App\Models\MemberPayment;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;

@@ -26,11 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Page::$reportValidationErrorUsing = function (ValidationException $exception) {
-            Notification::make()
-                ->title($exception->getMessage())
-                ->danger()
-                ->send();
-        };
+        //
     }
 }

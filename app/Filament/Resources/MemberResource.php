@@ -29,6 +29,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Notifications\Notification;
+use Illuminate\Validation\ValidationException;
 
 class MemberResource extends Resource
 {
@@ -68,10 +70,10 @@ class MemberResource extends Resource
                                     ->label('Block')
                                     ->options(function (callable $get){
                                         $district = District::find($get('district_id'));
-                                        if(! $district) {
-                                            return Block::all()->pluck('block_name', 'id');
+                                        if($district) {
+                                            return $district->blocks->pluck('block_name', 'id');
                                         }
-                                        return $district->blocks->pluck('block_name', 'id');
+                                        
                                     })
                                     ->reactive()
                                     ->afterStateUpdated(fn (callable $set) => $set('village_id', null)),
@@ -79,10 +81,10 @@ class MemberResource extends Resource
                                     ->label('Village')
                                     ->options(function (callable $get){
                                         $block = Block::find($get('block_id'));
-                                        if(! $block) {
-                                            return Village::all()->pluck('village_name', 'id');
+                                        if($block) {
+                                            return $block->villages->pluck('village_name', 'id');
                                         }
-                                        return $block->villages->pluck('village_name', 'id');
+                                        
                                     })
                                     ->reactive()
                                     ->afterStateUpdated(fn (callable $set) => $set('habitation_id', null)),
@@ -90,10 +92,10 @@ class MemberResource extends Resource
                                     ->label('Habitation')
                                     ->options(function (callable $get){
                                         $village = Village::find($get('village_id'));
-                                        if(! $village) {
-                                            return Habitation::all()->pluck('habitation_name', 'id');
+                                        if($village) {
+                                            return $village->habitations->pluck('habitation_name', 'id');
                                         }
-                                        return $village->habitations->pluck('habitation_name', 'id');
+                                        
                                     }),
                                     TextInput::make('contact_person_name')->required(),
                                     TextInput::make('contact_person_number')->required(),

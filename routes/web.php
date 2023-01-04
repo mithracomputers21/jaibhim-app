@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,21 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('jaibhimfoundation-administration', 'jaibhimfoundation-administration');
-Route::view('jaibhimfoundation-purpose', 'jaibhimfoundation-purpose');
-Route::view('jaibhimfoundation-publication', 'jaibhimfoundation-publication');
-Route::view('jaibhimfoundation-activities', 'jaibhimfoundation-activities');
-Route::view('jaibhimfoundation-team', 'jaibhimfoundation-team');
-Route::view('ambedkariyam-50-purchase', 'ambedkariyam-50-purchase');
-Route::view('ambedkariyam-volume-details', 'ambedkariyam-volume-details');
-Route::view('jaibhim-20-purpose', 'jaibhim-20-purpose');
-Route::view('jaibhim-20-activities', 'jaibhim-20-activities');
-Route::get('joining-form', 'JaibhimController@joiningForm');
-Route::get('ambedkariyam-ambassadors', 'JaibhimController@ambassadors');
-Route::view('contact', 'contact');
-Route::view('ayrodesign', 'ayrodesign');
-Route::view('ambedkariyam-library-open-procedures', 'ambedkariyam-library-open-procedures');
-Route::post('/sendEventMail','JaibhimController@sendMail')->name('send.email');
-Route::view('photos', 'photos');
-Route::view('videos', 'videos');
-Route::view('international-translation-committee', 'international-translation-committee');
+Route::get('/jaibhimfoundation-register', [JaibhimController::class, 'registration']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

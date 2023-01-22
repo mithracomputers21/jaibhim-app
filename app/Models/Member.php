@@ -17,7 +17,8 @@ class Member extends Model
         'plan_id',
         'type_id',
         'notes',
-        'event_id'
+        'event_id',
+        'user_id'
     ];
 
     public function plan()
@@ -64,5 +65,5 @@ class Member extends Model
     {
         return $this->hasMany(MemberPayment::class);
     }
-
+    
 }

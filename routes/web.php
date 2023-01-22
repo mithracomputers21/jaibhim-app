@@ -18,7 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/jaibhimfoundation-register', [JaibhimController::class, 'registration']);
+Route::view('jaibhim-20-purpose', 'jaibhim-20-purpose');
+Route::view('jaibhimfoundation-administration', 'jaibhimfoundation-administration');
+Route::view('ambedkariyam-50-purchase', 'ambedkariyam-50-purchase');
+Route::view('ambedkariyam-ambassadors', 'ambedkariyam-ambassadors');
+Route::view('ambedkariyam-library-open-procedures', 'ambedkariyam-library-open-procedures');
+Route::view('ambedkariyam-volume-details', 'ambedkariyam-volume-details');
+Route::view('contact', 'contact');
+Route::view('international-translation-committee', 'international-translation-committee');
+Route::view('jaibhim-20-activities', 'jaibhim-20-activities');
+Route::view('jaibhimfoundation-activities', 'jaibhimfoundation-activities');
+Route::view('jaibhimfoundation-publication', 'jaibhimfoundation-publication');
+Route::view('jaibhimfoundation-purpose', 'jaibhimfoundation-purpose');
+Route::view('jaibhimfoundation-team', 'jaibhimfoundation-team');
+Route::view('photos', 'photos');
+Route::view('videos', 'videos');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

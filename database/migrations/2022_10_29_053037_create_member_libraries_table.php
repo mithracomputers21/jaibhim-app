@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('district_id')->constrained()->cascadeOnDelete();
             $table->foreignId('block_id')->constrained()->cascadeOnDelete();
             $table->foreignId('village_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('habitation_id')->unique(column: 'habitation_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('habitation_id')->unique()->constrained()->cascadeOnDelete();
             $table->string('contact_person_name')->nullable();
             $table->string('contact_person_number')->nullable()->min(10)->max(10);
             $table->boolean('library_available')->default(0);

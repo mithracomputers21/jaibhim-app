@@ -22,6 +22,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -96,7 +97,9 @@ class MemberResource extends Resource
                                             return $village->habitations->pluck('habitation_name', 'id');
                                         }
                                         
-                                    }),
+                                    })
+                                    ->unique(ignoreRecord: true)
+                                    ->reactive(),
                                     TextInput::make('contact_person_name')->required(),
                                     TextInput::make('contact_person_number')->required(),
                                     Toggle::make('library_available')->inline(false)->label('Is Library Available?'),
@@ -116,6 +119,7 @@ class MemberResource extends Resource
                                 ->numeric()->required(),
                                 TextInput::make('transaction_id')->required(),
                                 TextInput::make('receipt_number')->required(),
+                                FileUpload::make('attachment'),
                                 Toggle::make('bank_status')->inline(false)->label('Is bank Status verified?'),
                                 TextInput::make('verified_by'),
                                 
@@ -170,5 +174,14 @@ class MemberResource extends Resource
             'create' => Pages\CreateMember::route('/create'),
             'edit' => Pages\EditMember::route('/{record}/edit'),
         ];
-    }    
+    }   
+    
+    protected function onValidationError(ValidationException $exception): void
+    {
+        Notification::make()
+            ->title($exception->getMessage())
+            ->danger()
+            ->send();
+    }
+
 }

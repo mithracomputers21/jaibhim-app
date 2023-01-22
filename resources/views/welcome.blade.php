@@ -122,5 +122,4 @@
       </div>
     </section><!-- End Contact Section -->
 
-    <livewire:register-form>
 @endsection

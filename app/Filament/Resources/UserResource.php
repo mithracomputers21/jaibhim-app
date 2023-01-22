@@ -51,7 +51,10 @@ class UserResource extends Resource
                         ->label('Password confirmation')
                         ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                         ->minLength(8)
-                        ->dehydrated(false)
+                        ->dehydrated(false),
+                        Select::make('roles')
+                        ->multiple()
+                        ->relationship('roles', 'name')->preload()
                     ])
             ]);
     }

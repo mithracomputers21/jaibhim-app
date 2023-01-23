@@ -29,21 +29,21 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.member.fields.id') }}
+                                        Name
                                     </th>
                                     <th>
-                                        {{ trans('cruds.member.fields.reference_number') }}
+                                        Plan
                                     </th>
                                     <th>
-                                        {{ trans('cruds.member.fields.category') }}
+                                        District
                                     </th>
                                     <th>
-                                        {{ trans('cruds.member.fields.type') }}
+                                        BLock
                                     </th>
                                     <th>
-                                        {{ trans('cruds.member.fields.name') }}
+                                        Village
                                     <th>
-                                        {{ trans('cruds.member.fields.district') }}
+                                        Habitation
                                     </th>
                                 </tr>
                                 
@@ -55,18 +55,18 @@
                                             {{ $member->id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $member->reference_number ?? '' }}
+                                            {{ $member->plan_id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ App\Models\Member::CATEGORY_SELECT[$member->type] ?? '' }}
+                                            {{  $member->member_libraries->district_id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ App\Models\Member::TYPE_SELECT[$member->type] ?? '' }}
+                                        {{  $member->member_libraries->block_id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $member->name ?? '' }}
+                                            {{ $member->member_libraries->village_id ?? '' }}
                                         <td>
-                                            {{ $member->district->name ?? '' }}
+                                            {{ $member->member_libraries->habitation_id ?? '' }}
                                         </td>
 
                                     </tr>

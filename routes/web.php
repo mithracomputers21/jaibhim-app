@@ -33,7 +33,6 @@ Route::view('jaibhimfoundation-purpose', 'jaibhimfoundation-purpose');
 Route::view('jaibhimfoundation-team', 'jaibhimfoundation-team');
 Route::view('photos', 'photos');
 Route::view('videos', 'videos');
-Route::get('/ambedkariyam-ambassadors', [JaibhimController::class, 'ambassadors']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

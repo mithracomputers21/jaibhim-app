@@ -33,6 +33,7 @@ Route::view('jaibhimfoundation-purpose', 'jaibhimfoundation-purpose');
 Route::view('jaibhimfoundation-team', 'jaibhimfoundation-team');
 Route::view('photos', 'photos');
 Route::view('videos', 'videos');
+Route::view('joiningform', 'joiningform');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

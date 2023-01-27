@@ -15,6 +15,12 @@ class User extends Authenticatable implements FilamentUser
 {
     use HasRoles, HasApiTokens, HasFactory, Notifiable;
 
+    public function canAccessFilament(): bool
+    {
+        return str_ends_with($this->email, '@gmail.com')
+            && $this->hasVerifiedEmail();
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -50,9 +56,4 @@ class User extends Authenticatable implements FilamentUser
         return $this->belongsTo(MemberPayment::class);
     }
 
-    public function canAccessFilament(): bool
-    {
-        return str_ends_with($this->email, '@yourdomain.com')
-            && $this->hasVerifiedEmail();
-    }
 }

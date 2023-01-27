@@ -15,7 +15,7 @@ class MemberStatsOverview extends BaseWidget
         return [
             Card::make('Total Members', Member::all()->count())
             ->color('success'),
-            Card::make('Total Amount'. 'Rs', MemberPayment::all()->sum('amount')),
+            Card::make('Total Amount', MemberPayment::all()->sum('amount')),
             Card::make('Total Libraries', MemberLibrary::all()->count()),
         ];
     }

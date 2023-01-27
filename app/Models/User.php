@@ -3,14 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable 
+
+class User extends Authenticatable implements FilamentUser
 {
     use HasRoles, HasApiTokens, HasFactory, Notifiable;
 
@@ -49,4 +50,9 @@ class User extends Authenticatable
         return $this->belongsTo(MemberPayment::class);
     }
 
+    public function canAccessFilament(): bool
+    {
+        return str_ends_with($this->email, '@yourdomain.com')
+            && $this->hasVerifiedEmail();
+    }
 }
